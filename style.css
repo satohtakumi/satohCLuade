@@ -81,6 +81,18 @@ img {
     transform: translateX(-50%);
     z-index: 5;
     display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hero a:hover,
+.hero a:active {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.8;
+}
+
+.hero a:active {
+    transform: translateX(-50%) scale(0.9);
 }
 
 .cta-image1 {
@@ -97,6 +109,18 @@ img {
     transform: translateX(-50%);
     z-index: 10;
     display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.image-container a:hover,
+.image-container a:active {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.8;
+}
+
+.image-container a:active {
+    transform: translateX(-50%) scale(0.9);
 }
 
 .cta-image2{
@@ -118,11 +142,42 @@ img {
     transform: translateX(-50%);
     z-index: 10;
     display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.image-container2 a:hover,
+.image-container2 a:active {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.8;
+}
+
+.image-container2 a:active {
+    transform: translateX(-50%) scale(0.9);
 }
 
 .cta-image3{
     width: 100%;
     height: auto;
+}
+
+/* スマホ向けタッチフィードバック強化 */
+@media (max-width: 767px) {
+    .hero a:active,
+    .image-container a:active,
+    .image-container2 a:active {
+        transform: translateX(-50%) scale(0.85);
+        opacity: 0.6;
+        transition: all 0.1s ease;
+    }
+    
+    /* タッチエリアを少し大きくする */
+    .hero a,
+    .image-container a,
+    .image-container2 a {
+        padding: 10px;
+        margin: -10px;
+    }
 }
 
 /* タブレット向け調整 */
