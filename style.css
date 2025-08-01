@@ -1,0 +1,133 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* モバイルファースト: 基本スタイル */
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 共通画像スタイル */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ヒーローセクション */
+.hero {
+    width: 100%;
+    height: 100％;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* コンテンツセクション - 縦並び */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.content-image {
+    width: 100%;
+    height: auto;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.content-image7a {
+    width: 100%;
+    height: auto;
+}
+/* CTAセクション */
+.cta {
+    width: 100%;
+}
+
+.cta-image1 {
+    width: 90%;
+    height: auto;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.cta-image2{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.image-container2 {
+    position: relative;
+    width: 100%;
+}
+
+.cta-image3{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* タブレット向け調整 */
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+/* デスクトップ向け調整 */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+    
+    /* デスクトップでも縦並びを維持 */
+    .content {
+        gap: 0;
+    }
+}
+
+/* 大画面向け調整 */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+}
