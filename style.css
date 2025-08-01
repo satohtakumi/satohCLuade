@@ -75,7 +75,7 @@ img {
     width: 90%;
     height: auto;
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
