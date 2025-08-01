@@ -71,7 +71,8 @@ img {
     width: 100%;
 }
 
-.cta-image1 {
+.cta-image1, 
+.hero a {
     width: 90%;
     height: auto;
     position: absolute;
@@ -79,16 +80,28 @@ img {
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+    display: block;
 }
 
-.cta-image2{
+.cta-image1 {
+    width: 100%;
+    height: auto;
+}
+
+.image-container a {
     width: 90%;
     height: auto;
     position: absolute;
-    bottom: 60px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    display: block;
+}
+
+.cta-image2{
+    width: 100%;
+    height: auto;
 }
 
 .image-container2 {
@@ -96,14 +109,20 @@ img {
     width: 100%;
 }
 
-.cta-image3{
+.image-container2 a {
     width: 90%;
     height: auto;
     position: absolute;
-    bottom: 60px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    display: block;
+}
+
+.cta-image3{
+    width: 100%;
+    height: auto;
 }
 
 /* タブレット向け調整 */
