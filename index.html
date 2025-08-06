@@ -150,6 +150,7 @@
           this.startY = e.touches[0].clientY;
           this.startTime = Date.now();
           this.isScrolling = false;
+          this.currentSlideElement = this.slides[this.currentSlide];
         }
         
         handleTouchMove(e) {
@@ -158,20 +159,50 @@
           const currentY = e.touches[0].clientY;
           const deltaY = this.startY - currentY;
           
+          // 長い画像の場合はまずスクロールを許可
+          const slideElement = this.currentSlideElement;
+          const isAtTop = slideElement.scrollTop === 0;
+          const isAtBottom = slideElement.scrollTop >= slideElement.scrollHeight - slideElement.clientHeight;
+          
+          // 上方向スワイプ時：画像の底に到達していない場合はスクロールを許可
+          if (deltaY > 0 && !isAtBottom) {
+            this.isScrolling = true;
+            return;
+          }
+          
+          // 下方向スワイプ時：画像の上に到達していない場合はスクロールを許可  
+          if (deltaY < 0 && !isAtTop) {
+            this.isScrolling = true;
+            return;
+          }
+          
+          // スワイプ動作を実行
           if (Math.abs(deltaY) > 10) {
             e.preventDefault();
           }
         }
         
         handleTouchEnd(e) {
+          if (this.isScrolling) {
+            this.isScrolling = false;
+            return;
+          }
+          
           const endY = e.changedTouches[0].clientY;
           const deltaY = this.startY - endY;
           const deltaTime = Date.now() - this.startTime;
           
+          const slideElement = this.currentSlideElement;
+          const isAtTop = slideElement.scrollTop === 0;
+          const isAtBottom = slideElement.scrollTop >= slideElement.scrollHeight - slideElement.clientHeight;
+          
           if (Math.abs(deltaY) > this.threshold && deltaTime < this.timeThreshold) {
-            if (deltaY > 0) {
+            // 上方向スワイプ：画像の底に到達している場合のみ次のスライドへ
+            if (deltaY > 0 && isAtBottom) {
               this.nextSlide();
-            } else {
+            }
+            // 下方向スワイプ：画像の上に到達している場合のみ前のスライドへ
+            else if (deltaY < 0 && isAtTop) {
               this.prevSlide();
             }
           }
@@ -181,25 +212,56 @@
           this.startY = e.clientY;
           this.startTime = Date.now();
           this.isScrolling = false;
+          this.currentSlideElement = this.slides[this.currentSlide];
           e.preventDefault();
         }
         
         handleMouseMove(e) {
           if (this.startY === 0) return;
+          
+          const currentY = e.clientY;
+          const deltaY = this.startY - currentY;
+          
+          // 長い画像の場合はまずスクロールを許可
+          const slideElement = this.currentSlideElement;
+          const isAtTop = slideElement.scrollTop === 0;
+          const isAtBottom = slideElement.scrollTop >= slideElement.scrollHeight - slideElement.clientHeight;
+          
+          // スクロール可能な場合はスクロールを許可
+          if ((deltaY > 0 && !isAtBottom) || (deltaY < 0 && !isAtTop)) {
+            this.isScrolling = true;
+            slideElement.scrollTop += deltaY * 0.5; // マウスドラッグでスクロール
+            this.startY = currentY; // 開始位置を更新
+            return;
+          }
+          
           e.preventDefault();
         }
         
         handleMouseEnd(e) {
           if (this.startY === 0) return;
           
+          if (this.isScrolling) {
+            this.isScrolling = false;
+            this.startY = 0;
+            return;
+          }
+          
           const endY = e.clientY;
           const deltaY = this.startY - endY;
           const deltaTime = Date.now() - this.startTime;
           
+          const slideElement = this.currentSlideElement;
+          const isAtTop = slideElement.scrollTop === 0;
+          const isAtBottom = slideElement.scrollTop >= slideElement.scrollHeight - slideElement.clientHeight;
+          
           if (Math.abs(deltaY) > this.threshold && deltaTime < this.timeThreshold) {
-            if (deltaY > 0) {
+            // 上方向スワイプ：画像の底に到達している場合のみ次のスライドへ
+            if (deltaY > 0 && isAtBottom) {
               this.nextSlide();
-            } else {
+            }
+            // 下方向スワイプ：画像の上に到達している場合のみ前のスライドへ
+            else if (deltaY < 0 && isAtTop) {
               this.prevSlide();
             }
           }
@@ -244,6 +306,9 @@
             offsetTop += this.slides[i].offsetHeight;
           }
           wrapper.style.transform = `translateY(-${offsetTop}px)`;
+          
+          // 新しいスライドのスクロール位置を先頭にリセット
+          this.slides[this.currentSlide].scrollTop = 0;
         }
       }
       
