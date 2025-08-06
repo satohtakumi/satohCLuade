@@ -45,11 +45,44 @@ img {
     object-position: center;
 }
 
-/* コンテンツセクション - 縦並び */
-.content {
+/* Tinder風縦スワイプコンテナ */
+.swipe-container {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+}
+
+.swipe-wrapper {
+    height: auto;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.swipe-slide {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.swipe-slide .hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.swipe-slide.active {
+    /* アクティブクラスは不要 - transformで制御 */
+}
+
+.swipe-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .content-image {
@@ -163,6 +196,36 @@ img {
     height: auto;
 }
 
+/* ページネーション */
+.swipe-pagination {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+
+.pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-bullet.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+.pagination-bullet:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
 /* スマホ向けタッチフィードバック強化 */
 @media (max-width: 767px) {
     .hero a:active,
@@ -172,11 +235,24 @@ img {
         opacity: 0.6;
         transition: all 0.1s ease;
     }
+    
+    .swipe-pagination {
+        right: 15px;
+    }
+    
+    .pagination-bullet {
+        width: 10px;
+        height: 10px;
+    }
 }
 
 /* タブレット向け調整 */
 @media (min-width: 768px) {
     .container {
+        max-width: 768px;
+    }
+    
+    .swipe-slide img {
         max-width: 768px;
     }
 }
@@ -187,15 +263,22 @@ img {
         max-width: 1024px;
     }
     
-    /* デスクトップでも縦並びを維持 */
-    .content {
-        gap: 0;
+    .swipe-slide img {
+        max-width: 1024px;
+    }
+    
+    .swipe-pagination {
+        right: 30px;
     }
 }
 
 /* 大画面向け調整 */
 @media (min-width: 1440px) {
     .container {
+        max-width: 1200px;
+    }
+    
+    .swipe-slide img {
         max-width: 1200px;
     }
 }

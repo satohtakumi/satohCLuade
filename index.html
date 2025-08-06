@@ -34,48 +34,223 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <main class="container">
-      <section class="hero">
-        <img src="fvfa.png" alt="メインビジュアル" class="hero-image" />
-        <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'hero'})">
-          <img
-            src="CTAb.png"
-            alt="コールトゥアクション"
-            class="cta-image1"
-          />
-        </a>
-      </section>
-
-      <section class="content">
-        <img src="se1fa.png" alt="セクション1" class="content-image" />
-
-        <img src="se2fa.png" alt="セクション2" class="content-image" />
-        <img src="se3fa.png" alt="セクション3" class="content-image" />
-        <img src="se4fa.png" alt="セクション4" class="content-image" />
-        <img src="se5fa.png" alt="セクション5" class="content-image" />
-        <img src="se6fb.png" alt="セクション6" class="content-image" />
-        <div class="image-container">
-          <img src="se7fa.png" alt="セクション7" class="content-image7a" />
-          <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'section7'})">
-            <img
-              src="CTAb.png"
-              alt="コールトゥアクション"
-              class="cta-image2"
-            />
-          </a>
+      <section class="swipe-container">
+        <div class="swipe-wrapper">
+          <div class="swipe-slide active">
+            <div class="hero">
+              <img src="fvfa.png" alt="メインビジュアル" class="hero-image" />
+              <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'hero'})">
+                <img
+                  src="CTAb.png"
+                  alt="コールトゥアクション"
+                  class="cta-image1"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="swipe-slide">
+            <img src="se1fa.png" alt="セクション1" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <img src="se2fa.png" alt="セクション2" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <img src="se3fa.png" alt="セクション3" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <img src="se4fa.png" alt="セクション4" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <img src="se5fa.png" alt="セクション5" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <img src="se6fb.png" alt="セクション6" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <div class="image-container">
+              <img src="se7fa.png" alt="セクション7" class="content-image7a" />
+              <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'section7'})">
+                <img
+                  src="CTAb.png"
+                  alt="コールトゥアクション"
+                  class="cta-image2"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="swipe-slide">
+            <img src="se9fa.png" alt="セクション8" class="content-image" />
+          </div>
+          <div class="swipe-slide">
+            <div class="image-container2">
+              <img src="se8fa.png" alt="セクション9" class="content-image" />
+              <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'section8'})">
+                <img
+                  src="CTAb.png"
+                  alt="コールトゥアクション"
+                  class="cta-image3"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="swipe-slide">
+            <img src="footerす.png" alt="セクション10" class="content-image" />
+          </div>
         </div>
-        <img src="se9fa.png" alt="セクション8" class="content-image" />
-        <div class="image-container2">
-          <img src="se8fa.png" alt="セクション9" class="content-image" />
-          <a href="https://www.udemy.com/course/5claudecode/?couponCode=7C314E7ACD6E1677C993" target="_blank" onclick="dataLayer.push({'event': 'cta_click', 'cta_location': 'section8'})">
-            <img
-              src="CTAb.png"
-              alt="コールトゥアクション"
-              class="cta-image3"
-            />
-          </a>
+        <div class="swipe-pagination">
+          <span class="pagination-bullet active"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
+          <span class="pagination-bullet"></span>
         </div>
-        <img src="footerす.png" alt="セクション8" class="content-image" />
       </section>
     </main>
+    <script>
+      // Tinder風縦スワイプ機能
+      class VerticalSwiper {
+        constructor() {
+          this.currentSlide = 0;
+          this.slides = document.querySelectorAll('.swipe-slide');
+          this.bullets = document.querySelectorAll('.pagination-bullet');
+          this.startY = 0;
+          this.startTime = 0;
+          this.isScrolling = false;
+          this.threshold = 50; // スワイプ判定の閾値
+          this.timeThreshold = 300; // 時間の閾値
+          
+          this.init();
+        }
+        
+        init() {
+          const container = document.querySelector('.swipe-container');
+          
+          // タッチイベント
+          container.addEventListener('touchstart', (e) => this.handleTouchStart(e));
+          container.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+          container.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+          
+          // マウスイベント（デスクトップ用）
+          container.addEventListener('mousedown', (e) => this.handleMouseStart(e));
+          container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+          container.addEventListener('mouseup', (e) => this.handleMouseEnd(e));
+          container.addEventListener('mouseleave', (e) => this.handleMouseEnd(e));
+          
+          // キーボードイベント
+          document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+        }
+        
+        handleTouchStart(e) {
+          this.startY = e.touches[0].clientY;
+          this.startTime = Date.now();
+          this.isScrolling = false;
+        }
+        
+        handleTouchMove(e) {
+          if (this.isScrolling) return;
+          
+          const currentY = e.touches[0].clientY;
+          const deltaY = this.startY - currentY;
+          
+          if (Math.abs(deltaY) > 10) {
+            e.preventDefault();
+          }
+        }
+        
+        handleTouchEnd(e) {
+          const endY = e.changedTouches[0].clientY;
+          const deltaY = this.startY - endY;
+          const deltaTime = Date.now() - this.startTime;
+          
+          if (Math.abs(deltaY) > this.threshold && deltaTime < this.timeThreshold) {
+            if (deltaY > 0) {
+              this.nextSlide();
+            } else {
+              this.prevSlide();
+            }
+          }
+        }
+        
+        handleMouseStart(e) {
+          this.startY = e.clientY;
+          this.startTime = Date.now();
+          this.isScrolling = false;
+          e.preventDefault();
+        }
+        
+        handleMouseMove(e) {
+          if (this.startY === 0) return;
+          e.preventDefault();
+        }
+        
+        handleMouseEnd(e) {
+          if (this.startY === 0) return;
+          
+          const endY = e.clientY;
+          const deltaY = this.startY - endY;
+          const deltaTime = Date.now() - this.startTime;
+          
+          if (Math.abs(deltaY) > this.threshold && deltaTime < this.timeThreshold) {
+            if (deltaY > 0) {
+              this.nextSlide();
+            } else {
+              this.prevSlide();
+            }
+          }
+          
+          this.startY = 0;
+        }
+        
+        handleKeyDown(e) {
+          if (e.key === 'ArrowUp') {
+            this.prevSlide();
+          } else if (e.key === 'ArrowDown') {
+            this.nextSlide();
+          }
+        }
+        
+        nextSlide() {
+          if (this.currentSlide < this.slides.length - 1) {
+            this.goToSlide(this.currentSlide + 1);
+          }
+        }
+        
+        prevSlide() {
+          if (this.currentSlide > 0) {
+            this.goToSlide(this.currentSlide - 1);
+          }
+        }
+        
+        goToSlide(index) {
+          // 現在のスライドを非アクティブに
+          this.slides[this.currentSlide].classList.remove('active');
+          this.bullets[this.currentSlide].classList.remove('active');
+          
+          // 新しいスライドをアクティブに
+          this.currentSlide = index;
+          this.slides[this.currentSlide].classList.add('active');
+          this.bullets[this.currentSlide].classList.add('active');
+          
+          // スライドアニメーション - 各スライドの実際の高さを計算
+          const wrapper = document.querySelector('.swipe-wrapper');
+          let offsetTop = 0;
+          for (let i = 0; i < this.currentSlide; i++) {
+            offsetTop += this.slides[i].offsetHeight;
+          }
+          wrapper.style.transform = `translateY(-${offsetTop}px)`;
+        }
+      }
+      
+      // 初期化
+      document.addEventListener('DOMContentLoaded', () => {
+        new VerticalSwiper();
+      });
+    </script>
   </body>
 </html>
