@@ -1,0 +1,93 @@
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+}
+
+.video-sample img {
+  max-width: 600px;
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.description {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.flow {
+  margin: 40px auto;
+}
+
+.flow ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.flow li {
+  flex: 1;
+  min-width: 100px;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.contact label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.contact input,
+.contact textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact button {
+  align-self: center;
+  padding: 10px 30px;
+  border: none;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.contact button:hover {
+  background: #555;
+}
