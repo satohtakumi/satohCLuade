@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>動画広告制作</title>
+    <link rel="stylesheet" href="video_ad.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Hero -->
+      <section class="hero">
+        <!-- <h1>このような動画広告を<br />つくりませんか？</h1> -->
+        <img
+        src="header3.png"
+        alt="メールを送るイラスト"
+      />
+        <div class="video-sample">
+          <iframe
+            src="https://player.vimeo.com/video/1114630800"
+            title="動画広告サンプル"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Description -->
+      <section class="description">
+        <p>
+          はじめまして。<br />
+          私は個人でイラスト・アニメーションを活用した
+          <strong>広告動画の制作</strong>
+          を行っております。<br /><br />
+
+          近年、SNSや動画広告では
+          <strong>「いかに最初の数秒で視聴者の心をつかむか」</strong>
+          が成果を大きく左右します。<br /><br />
+
+          そこで私が得意としているのが、
+          <strong>「一目で記憶に残るユニークな広告動画」</strong>
+          です。<br /><br />
+
+          ・<strong>最初の数秒で心をつかむ演出</strong><br />
+          ・<strong>ユーザーが離脱しない動画</strong><br />
+          ・<strong>思わず目を止めて観てしまう仕掛け</strong><br /><br />
+
+          「普通の広告では物足りない」
+          <strong>「もっと人に届く広告が欲しい」</strong>
+          そんな想いをお持ちの方は、ぜひ一度ご相談ください。
+        </p>
+      </section>
+
+      <!-- Flow -->
+      <section class="flow">
+        <h2>制作フロー</h2>
+        <img src="↓.png" alt="制作フローの図" />
+      </section>
+
+      <p class="note">
+        条件によって、金額等変動しますので、お気軽にご相談いただけますと幸いです。<br /><br />
+        ▼下記のフォームをご入力ください。
+      </p>
+
+      <!-- Contact -->
+      <section class="contact">
+        <div class="contact-box">
+          <h2>お問い合わせフォーム</h2>
+          <form
+            class="contact-form"
+            action="https://script.google.com/macros/s/AKfycbzNzp-80G2whmhPIIiLJItUmWxoVyzOoxEXi8wmusdU0MwYqv4ueWiL6N93rJTcg8Xm/exec"
+            method="post"
+          >
+            <label>
+              会社名
+              <input type="text" name="company" placeholder="会社名" required />
+            </label>
+
+            <label>
+              商材のLPやサービスページのリンク
+              <input
+                type="url"
+                name="lp_url"
+                placeholder="https://example.com"
+                required
+              />
+            </label>
+
+            <label>
+              メールアドレス
+              <input
+                type="email"
+                name="email"
+                placeholder="メールアドレス"
+                required
+              />
+            </label>
+
+            <button type="submit">送信</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <section class="profile">
+        <h2>経歴・実績</h2>
+        <p>
+          <strong>【経歴】</strong><br />
+          広告代理店勤務：3年<br />
+          SNSクリエイティブ制作：3年<br />
+          SNS広告運用：3年<br />
+          イラスト・漫画：5年
+        </p>
+
+        <p>
+          <strong>■実績</strong><br />
+          勤務していた会社のプロジェクトで、ROAS1,000％を達成。具体的には、単月において広告費1,000万円を投下し、そこから1億円の売上を創出することに成功しました。<br /><br />
+          この成果は単なる一時的なヒットではなく、データドリブンな改善サイクルを繰り返すことで実現したもので、クリエイティブと運用の両輪を自ら担当したことが大きな要因です。<br /><br />
+          特に、訴求軸を細かくテストしながら効果の高いクリエイティブを量産・最適化したことが、爆発的な広告効果につながりました。
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
+
+<script>
+  const GAS_URL =
+    "https://script.google.com/macros/s/AKfycbzNzp-80G2whmhPIIiLJItUmWxoVyzOoxEXi8wmusdU0MwYqv4ueWiL6N93rJTcg8Xm/exec";
+
+  document
+    .querySelector(".contact-form")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault(); // 通常送信を止める
+
+      const formData = new FormData(this);
+      const params = new URLSearchParams(formData);
+
+      try {
+        const res = await fetch(GAS_URL, {
+          method: "POST",
+          body: params,
+        });
+        const json = await res.json();
+
+        if (json.ok) {
+          window.location.href = "send.html"; // 保存成功後に遷移
+        } else {
+          alert("送信に失敗しました: " + (json.error || "不明なエラー"));
+        }
+      } catch (err) {
+        alert("通信エラー: " + err);
+      }
+    });
+</script>
