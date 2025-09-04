@@ -62,6 +62,13 @@ body {
   margin: 32px auto; /* 左右オートで中央寄せ */
 }
 
+img {
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  margin: 8px auto; /* 左右オートで中央寄せ */
+}
+
 .sp-break {
   display: none;
 }
@@ -152,7 +159,7 @@ body {
 }
 
 .note {
-  width: 100%;
+  width: 90%;
   max-width: 800px;
   color: red; /* 赤字 */
   font-weight: bold; /* 強調したいなら太字 */
