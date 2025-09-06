@@ -133,6 +133,56 @@ img {
   }
 }
 
+#campaign-offer {
+  background-color: #fff9c4; /* 全体を黄色で覆う */
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.2em; /* 全体の文字サイズを大きく */
+  margin-top: 40px;
+}
+
+#campaign-offer h2 {
+  text-align: center; /* 見出しだけ中央揃え */
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 500px) {
+  #campaign-offer h2 {
+    font-size: 22px;
+  }
+  #campaign-offer p {
+    font-size: 16px;
+  }
+}
+
+#campaign-offer .highlight {
+  color: red;
+  font-weight: bold;
+}
+
+#campaign-offer .offer-box {
+  background-color: #fff3cd;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+#campaign-offer .special-price {
+  color: #d63384;
+}
+
+#campaign-offer .highlight-text {
+  text-align: center; /* この行全体を中央寄せ */
+  margin: 15px 0;
+}
+
+#campaign-offer .highlight {
+  color: red;
+  font-weight: bold;
+}
+
 /* Flow */
 .flow {
   margin: 32px auto;

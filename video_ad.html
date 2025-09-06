@@ -75,6 +75,45 @@
         </p>
       </section>
 
+      <section id="campaign-offer">
+        <h2>特別キャンペーンのお知らせ</h2>
+        <p>
+          現在上記の動画を少額で広告に出稿しているのですが、CTRが<strong>4.5％</strong>ほどあり、
+          <strong>To B向けの広告の中ではかなり高い部類</strong
+          >だと思います。<br />
+          To
+          C向けのターゲットが広いものであれば、より高いクリック率が見込めます。
+        </p>
+        <p>
+          実はまだこの事業をはじめたばかりなので、これから実績をどんどんつくっていきたいと考えております。そこで、
+        </p>
+        <p class="highlight-text">
+          <span style="color: red; font-weight: bold"
+            >特別に期間限定のキャンペーンを開催します！</span
+          >
+        </p>
+        <p>
+          <b>"<span id="campaign-deadline"></span>までに"</b
+          >お問い合わせいただいた方に、<br /><br />
+          <span style="color: #d63384">特別価格</span
+          >でオファーさせていただきます！
+        </p>
+        <br />
+        <p>是非お気軽にお問い合わせください。</p>
+      </section>
+
+      <script>
+        // 今日の日付＋2日を計算して表示
+        const today = new Date();
+        today.setDate(today.getDate() + 2);
+        const deadline = today.toLocaleDateString("ja-JP", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        });
+        document.getElementById("campaign-deadline").textContent = deadline;
+      </script>
+
       <!-- Flow -->
       <section class="flow">
         <h2>制作フロー</h2>
