@@ -139,6 +139,7 @@ img {
   border-radius: 8px;
   font-size: 1.2em; /* 全体の文字サイズを大きく */
   margin-top: 40px;
+  line-height: 1.7; /* 行間を文字サイズの1.8倍にする */
 }
 
 #campaign-offer h2 {
@@ -176,6 +177,8 @@ img {
 #campaign-offer .highlight-text {
   text-align: center; /* この行全体を中央寄せ */
   margin: 15px 0;
+  font-size: 22px;
+  line-height: 1.5;
 }
 
 #campaign-offer .highlight {
@@ -294,16 +297,45 @@ img {
   cursor: pointer;
   border-radius: 50px;
   width: 80%;
-  margin-top: 40px;
+  margin-top: 8px;
+
+  /* 追加: なめらかな動き */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: pulse 2.5s infinite;
 }
 
 .contact button:hover {
   background: #1e9e1e;
+  transform: translateY(-3px) scale(1.03); /* ホバーで少し浮き上がる */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .contact button:active {
   background: #148c14;
-  transform: scale(0.97); /* 少し縮む */
+  transform: scale(0.95); /* クリック時に縮む */
+}
+
+/* ボタンを軽く脈打つように動かす */
+/* ボタンを軽く脈打つように動かす（ゆるめ・少し早め） */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.contact button {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+#top-button {
+  text-align: center;
+  margin-bottom: -16px;
+  font-size: 18px;
 }
 
 .profile {
@@ -312,6 +344,7 @@ img {
   padding: 0 16px;
   line-height: 1.8;
   color: #333;
+  margin-bottom: 120px;
 }
 
 .profile h2 {

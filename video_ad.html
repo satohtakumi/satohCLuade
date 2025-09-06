@@ -35,11 +35,11 @@
       <!-- Hero -->
       <section class="hero">
         <!-- <h1>このような動画広告を<br />つくりませんか？</h1> -->
-        <img src="ヘッダー2.png" alt="メールを送るイラスト" />
+        <img src="ヘッダー2.png" alt="ヘッダー" />
         <div class="video-sample">
           <iframe
             src="https://player.vimeo.com/video/1114630800"
-            title="動画広告サンプル"
+            title="動画広告制作"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
@@ -48,8 +48,8 @@
       </section>
 
       <!-- Description -->
-      <img src="お悩み4.png" alt="メールを送るイラスト" />
-      <img src="watashi.png" alt="メールを送るイラスト" />
+      <img src="お悩み4.png" alt="お悩み" />
+      <img src="watashi.png" alt="わたし" />
       <section class="description">
         <p>
           はじめまして。<br />
@@ -89,30 +89,19 @@
         </p>
         <p class="highlight-text">
           <span style="color: red; font-weight: bold"
-            >特別に期間限定のキャンペーンを開催します！</span
+            >特別に期間限定の<br />キャンペーンを開催します！</span
           >
         </p>
         <p>
-          <b>"<span id="campaign-deadline"></span>までに"</b
+          <b>"<span class="campaign-deadline"></span>までに"</b
           >お問い合わせいただいた方に、<br /><br />
           <span style="color: #d63384">特別価格</span
           >でオファーさせていただきます！
         </p>
+
         <br />
         <p>是非お気軽にお問い合わせください。</p>
       </section>
-
-      <script>
-        // 今日の日付＋2日を計算して表示
-        const today = new Date();
-        today.setDate(today.getDate() + 2);
-        const deadline = today.toLocaleDateString("ja-JP", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        });
-        document.getElementById("campaign-deadline").textContent = deadline;
-      </script>
 
       <!-- Flow -->
       <section class="flow">
@@ -159,7 +148,13 @@
               />
             </label>
 
-            <button type="submit">送信</button>
+            <p id="top-button">
+              <b
+                >"<span class="campaign-deadline" style="color: #d63384"></span
+                >まで特別割引"</b
+              >
+            </p>
+            <button type="submit">話を聞いてみる</button>
           </form>
         </div>
       </section>
@@ -214,4 +209,18 @@
         alert("通信エラー: " + err);
       }
     });
+</script>
+
+<script>
+  const today = new Date();
+  today.setDate(today.getDate() + 2);
+  const deadline = today.toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  document.querySelectorAll(".campaign-deadline").forEach((el) => {
+    el.textContent = deadline;
+  });
 </script>
